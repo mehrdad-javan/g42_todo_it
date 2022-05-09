@@ -11,6 +11,8 @@ public class Person {
   private String lastName;
   private String email;
 
+  private AppUser credentials;
+
   public Person() {
   }
 
@@ -61,6 +63,14 @@ public class Person {
     //if (email == null) throw new IllegalArgumentException("email is null");
     Validation.checkStringNotNull.accept(email, "email");
     this.email = email;
+  }
+
+  public AppUser getCredentials() {
+    return credentials;
+  }
+
+  public void setCredentials(AppUser credentials) {
+    this.credentials = credentials;
   }
 
   @Override
