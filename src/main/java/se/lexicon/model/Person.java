@@ -1,5 +1,7 @@
 package se.lexicon.model;
 
+import se.lexicon.util.Validation;
+
 import java.util.Objects;
 
 public class Person {
@@ -36,7 +38,8 @@ public class Person {
   }
 
   public void setFirstName(String firstName) {
-    if (firstName == null) throw new IllegalArgumentException("firstName is null");
+    //if (firstName == null) throw new IllegalArgumentException("firstName is null");
+    Validation.checkStringNotNull.andThen(Validation.checkNotEmpty).andThen(Validation.checkMaxLength20).accept(firstName, "FirstName");
     this.firstName = firstName;
   }
 
@@ -45,7 +48,8 @@ public class Person {
   }
 
   public void setLastName(String lastName) {
-    if (lastName == null) throw new IllegalArgumentException("lastName is null");
+    //if (lastName == null) throw new IllegalArgumentException("lastName is null");
+    Validation.checkStringNotNull.accept(lastName, "lastName");
     this.lastName = lastName;
   }
 
@@ -54,7 +58,8 @@ public class Person {
   }
 
   public void setEmail(String email) {
-    if (email == null) throw new IllegalArgumentException("email is null");
+    //if (email == null) throw new IllegalArgumentException("email is null");
+    Validation.checkStringNotNull.accept(email, "email");
     this.email = email;
   }
 
