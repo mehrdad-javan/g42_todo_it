@@ -2,9 +2,10 @@ package se.lexicon.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+//@TestMethodOrder(MethodOrderer.MethodName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PersonTest {
 
   public Person testObject;
@@ -15,6 +16,7 @@ public class PersonTest {
   }
 
   @Test
+  @Order(1)
   public void testObject_successfully_instantiated() {
     assertEquals("Mehrdad", testObject.getFirstName());
     assertEquals("Javan", testObject.getLastName());
@@ -29,12 +31,14 @@ public class PersonTest {
 
 
   @Test
+  @Order(3)
   public void test_equal_successfully() {
     Person expectedResult = new Person("Mehrdad", "Javan", "mehrdad.javan@lexicon.se");
     assertEquals(expectedResult, testObject);
   }
 
   @Test
+  @Order(2)
   public void test_hashCode_successfully() {
     Person expectedResult = new Person("Mehrdad", "Javan", "mehrdad.javan@lexicon.se");
     assertEquals(expectedResult.hashCode(), testObject.hashCode());
